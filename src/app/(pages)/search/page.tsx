@@ -1,9 +1,13 @@
 import SearchShoe from "@/app/components/SearchShoe";
 import { getListProductByKeyWord } from "@/app/service/shoeApi";
 
-const SearchPage = async ({ searchParams }) => {
-  const { tenGiay } = searchParams;
-  console.log("tenGiay: ", tenGiay);
+const SearchPage = async ({
+  searchParams,
+}: {
+  searchParams: Promise<{ tenGiay: string }>;
+}) => {
+  const { tenGiay } = await searchParams;
+  console.log("tenGiay: ", tenGiay); // nike
 
   const listInitShoe = await getListProductByKeyWord(tenGiay);
   console.log("listInitShoe: ", listInitShoe);
